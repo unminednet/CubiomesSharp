@@ -39,5 +39,5 @@ jobs:
           name: CubiomesSharp
           path: CubiomesSharp/bin/Release/*.nupkg
           if-no-files-found: error
-#      - name: Publish package to github nuget registry
-#        run: dotnet nuget push bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/unminednet/index.json --skip-duplicate
+      - name: Publish package to github nuget registry
+        run: dotnet nuget push bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/unminednet/index.json --skip-duplicate
