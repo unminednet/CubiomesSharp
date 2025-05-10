@@ -21,18 +21,6 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
-	<PropertyGroup Condition = "$(RuntimeIdentifier.StartsWith('osx'))">
-		<DefineConstants>$(DefineConstants);RUNTIME_OSX</DefineConstants>
-	</PropertyGroup>
-	<PropertyGroup Condition = "$(RuntimeIdentifier.StartsWith('win'))">
-		<DefineConstants>$(DefineConstants);RUNTIME_WINDOWS</DefineConstants>
-	</PropertyGroup>
-	<PropertyGroup Condition = "$(RuntimeIdentifier.StartsWith('linux'))">
-		<DefineConstants>$(DefineConstants);RUNTIME_LINUX</DefineConstants>
-	</PropertyGroup>
-
-
-
 	<ItemGroup>
 		<None Include="..\README.md">
 			<Pack>True</Pack>
