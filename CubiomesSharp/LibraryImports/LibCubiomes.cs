@@ -5,7 +5,13 @@ namespace CubiomesSharp.LibraryImports;
 
 public static partial class LibCubiomes
 {
+#if RUNTIME_OSX
+    private const string DllName = "libcubiomes.dylib";
+#elif RUNTIME_LINUX
+    private const string DllName = "libcubiomes.so";
+#else
     private const string DllName = "libcubiomes.dll";
+#endif
 
     [LibraryImport(DllName, EntryPoint = "allocGenerator")]
     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
