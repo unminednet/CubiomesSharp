@@ -74,14 +74,14 @@ var version = McVersion.MC_1_18;
 var seed = -1234;
 
 // Allocate a biome generator
-var g = Cubiomes.AllocGenerator();
+var g = LibCubiomes.AllocGenerator();
 try
 {
     // Setup the generator with the given Minecraft version
-    Cubiomes.SetupGenerator(g, version, 0);
+    LibCubiomes.SetupGenerator(g, version, 0);
 
     // Apply the seed to the generator for the Overworld dimension.
-    Cubiomes.ApplySeed(g, Dimension.Overworld, seed);
+    LibCubiomes.ApplySeed(g, Dimension.Overworld, seed);
 
     var r = new CubiomesRange
     {
@@ -95,28 +95,28 @@ try
     };
 
     // Allocate the necessary cache for this range.
-    var biomeIds = new int[Cubiomes.GetMinCacheSize(g, r)];
+    var biomeIds = new int[LibCubiomes.GetMinCacheSize(g, r)];
 
     // Generate biomes in the given range.
-    Cubiomes.GenBiomes(g, biomeIds, r);
+    LibCubiomes.GenBiomes(g, biomeIds, r);
 
     // Initialize biome colors
     var biomeColors = new byte[256 * 3];
-    Cubiomes.InitBiomeColors(biomeColors);
+    LibCubiomes.InitBiomeColors(biomeColors);
     
     // Allocate a buffer for the RGB image (3 bytes per pixel)
     var pixels = new byte[r.sx * r.sz * 3];
 
     // Generate image from biomes
-    Cubiomes.BiomesToImage(pixels, biomeColors, biomeIds, r.sx, r.sz, 1, 1);
+    LibCubiomes.BiomesToImage(pixels, biomeColors, biomeIds, r.sx, r.sz, 1, 1);
 
     // Save the RGB buffer to a PPM image file.
-    Cubiomes.SavePpm("map.ppm", pixels, r.sx, r.sz);    
+    LibCubiomes.SavePpm("map.ppm", pixels, r.sx, r.sz);    
 }
 finally
 {
     // Clean up
-    Cubiomes.Free(ref g);
+    LibCubiomes.Free(ref g);
 }
 
 ```
