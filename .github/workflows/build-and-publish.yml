@@ -1,0 +1,43 @@
+name: Build and publish
+
+on:
+  workflow_dispatch: {}
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+
+  build-and-publish-nuget:
+    name: Build and publish nuget package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./CubiomesSharp
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+      - name: Add GitHub Packages as a NuGet source
+        run: dotnet nuget add source "https://nuget.pkg.github.com/unminednet/index.json" `
+               --name "github" `
+               --username "github" `
+               --password "${{ secrets.GITHUB_TOKEN }}" `
+               --store-password-in-clear-text
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build -c Release
+      - name: Pack
+        run: dotnet pack -c Release
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: CubiomesSharp
+          path: CubiomesSharp/bin/Release/*.nupkg
+          if-no-files-found: error
+#      - name: Publish package to github nuget registry
+#        run: dotnet nuget push bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/unminednet/index.json --skip-duplicate

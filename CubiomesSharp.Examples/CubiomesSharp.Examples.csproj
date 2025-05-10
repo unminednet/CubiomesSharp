@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.8" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!--
+		This references the CubiomesSharp project in the current solution.
+        Use <PackageReference Include="CubiomesSharp" /> instead to reference the NuGet package. -->
+		<ProjectReference Include="..\CubiomesSharp\CubiomesSharp.csproj" />
+	</ItemGroup>
+
+</Project>
