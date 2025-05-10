@@ -1,16 +1,15 @@
 # CubiomesSharp ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-   
-
 CubiomesSharp is for developers who want to use the [cubiomes](https://github.com/Cubitect/cubiomes) library in their C# applications. 
 
 Cubiomes is a standalone library, written in C, that mimics the biome and feature generation of Minecraft Java Edition. It is intended as a powerful tool to devise very fast, custom seed-finding applications and large-scale map viewers with minimal memory usage.
 
-CubiomesSharp provides type definitions and LibraryImports for cubiomes.
+
+CubiomesSharp is not part of cubiomes, but an independent project that provides C# type definitions and LibraryImports for cubiomes.
 
 #### Native binaries
 
-CubiomesSharp depends on the [CubiomesSharp.Native](https://github.com/unminednet/CubiomesSharp.Native) NuGet package, which contains the pre-built native binaries of cubiomes for various platforms.
+CubiomesSharp depends on the [CubiomesSharp.Native](https://github.com/unminednet/CubiomesSharp.Native) NuGet package, which provides pre-built native binaries of cubiomes for Windows, Linux and macOS.
 
 #### State of development
 
@@ -24,7 +23,7 @@ See the cubiomes repository for documentation on the imported functions.
 
 #### Add the NuGet source
 
-> [!NOTE] 
+> [!NOTE]
 > CubiomesSharp NuGet packages are hosted on GitHub. You will need a GitHub account and a personal access token with the `read:packages` scope for accessing the NuGet package registry.
 
 Add `https://nuget.pkg.github.com/unminednet/index.json` to your NuGet sources.
